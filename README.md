@@ -8,7 +8,7 @@
 
 
 # ⚙️ Key Features
-* **Advanced Numerical Greeks**: The system computes second-order sensitivities (Vega, Vanna, and Volga) using adaptive finite differences and Richardson extrapolation to ensure numerical stability even near market bound
+* **Advanced Numerical Greeks**: The system computes second-order sensitivities Vanna, and Volga using adaptive finite differences and Richardson extrapolation to ensure numerical stability even near market bound
 
 * **Performance Optimization (Caching)**: To avoid redundant calculations, the pricer caches Vanna-Volga weights and the pillar 3x3 Greek matrix per market slice, significantly speeding up the pricing of multiple strikes
 
@@ -53,6 +53,7 @@ $$Digital(K) = - \frac{\partial C(K)}{\partial K} \approx \frac{C(K-\epsilon)-C(
 * **Finite-difference sensitivity**: Greeks and digital prices depend on step-size choices and require adaptive bumping for numerical stability.
 
 * **Performance optimization**: Repeated evaluations across multiple strikes and maturities require caching and efficient numerical routines to prevent redundant computations.
+
 
 
 
