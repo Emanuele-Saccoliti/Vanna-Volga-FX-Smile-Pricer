@@ -12,7 +12,7 @@
 
 * **Performance Optimization (Caching)**: To avoid redundant calculations, the pricer caches Vanna-Volga weights and the pillar 3x3 Greek matrix per market slice, significantly speeding up the pricing of multiple strikes
 
-* **Support for FX Conventions**: The engine is built to handle different market conventions, specifically allowing the user to switch between Spot Premium Excluded and Forward Premium Excluded delta logic
+* **Configurable FX Conventions**: The engine is built to handle different market conventions, specifically allowing the user to switch between Spot Premium Excluded and Forward Premium Excluded delta logic
 
 * **Modular Architecture**: The library uses a decoupled design where pricing methodology, numerical infrastructure, and market conventions are independent modules that can be replaced or extended
 
@@ -53,4 +53,5 @@ $$Digital(K) = - \frac{\partial C(K)}{\partial K} \approx \frac{C(K-\epsilon)-C(
 * **Finite-difference sensitivity**: Greeks and digital prices depend on step-size choices and require adaptive bumping for numerical stability.
 
 * **Performance optimization**: Repeated evaluations across multiple strikes and maturities require caching and efficient numerical routines to prevent redundant computations.
+
 
