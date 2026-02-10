@@ -1,55 +1,42 @@
-## Folder Structure
-The project has the following strutural organization:
-src/main/java/fxvv/
-  Main.java
 
-  conventions/
-    DeltaConvention.java
+# Repository Description
 
-  market/
-    SmileQuote.java
-    MarketSlice.java
-    MarketSliceBuilder.java
+* This repository provides an FX options pricing library based on the Vanna–Volga methodology, calibrated directly to FX smile quotes. The framework transforms market delta quotes into strikes, reconstructing a consistent volatility smile, and producing market-consistent prices for vanilla and first generation exotic FX options.
 
-  numerics/
-    NormalDist.java
-    RootFinder.java
-    LinearSolver3.java
-
-    impl/
-      AbramowitzStegunNormal.java
-      BisectionRootFinder.java
-      GaussianElimination3.java
-
-  bs/
-    GKBlackScholes.java
-    GreeksFD.java
-
-  pricer/
-    SmilePricer.java
-    VannaVolgaSmilePricer.java
+* More specifically, the library reconstructs the FX volatility smile from sparse market inputs and applies Vanna–Volga adjustments to Black–Scholes prices. Building on the calibrated smile, the framework is extended to exotic payoff foundations, pricing digital options via finite differences on Vanna–Volga adjusted vanilla prices.
 
 
 
-Specifically,
-    Root package
-    - Main.java → application entry point
+# 🔍 Key Objectives
 
-    market/ = Market data objects and loaders
-    - SmileQuote.java → market smile quotes (ATM, RR25, BF25, rates)
-    - MarketSlice.java → derived vols and strikes
-    - CsvLoader.java → load market data from CSV
+* Reconstruct FX volatility smiles from market quotes
 
-    bs/ = Black-Scholes utilities and math
-    - Normal.java → Gaussian PDF/CDF
-    - GKBlackScholes.java → FX Black-Scholes pricing and Greeks
+* Apply Vanna–Volga adjustments to obtain smile-consistent vanilla prices
 
-    vv/ = Core Vanna-Volga engine
-    - DeltaStrikeSolver.java → compute strike from delta (bisection)
-    - Linear3x3.java → small linear system solver
-    - VannaVolgaPricer.java → Vanna-Volga pricing logic
+* Build a foundation for exotic option pricing using Vanna-Volga method
 
-    report/ = Output and reporting tools
-    - ReportPrinter.java → console reports
-    - CsvExporter.java → export results to CSV
-# Vanna-Volga-FX-Smile-Pricer
+* Design a modular, dependency-free numerical architecture for future extension
+
+
+
+# 📌 Key Takeaways
+
+* FX options are quoted in delta terms rather than strike terms
+
+* Vanna–Volga bridges Black–Scholes pricing and market smile effects
+
+* Digital options can be priced via finite differences on smile-consistent vanilla prices
+
+$$Digital(K) = - \frac{\partial C(K)}{\partial K} \approx \frac{C(K-\epsilon)-C(K+\epsilon)}{2\epsilon}$$
+
+
+
+# ⚠️ Challenges
+
+* Market conventions complexity: FX options rely on multiple delta conventions (spot/forward, premium included/excluded), and incorrect assumptions lead to incorrect strikes and pricing.
+
+* Smile extrapolation risk: Vanna–Volga is most reliable between the 25-delta pillars; far-wing extrapolation may become unstable.
+
+* Finite-difference sensitivity: Greeks and digital prices depend on step-size choices and require adaptive bumping for numerical stability.
+
+* Performance optimization: Repeated evaluations across multiple strikes and maturities require caching and efficient numerical routines to prevent redundant computations.
