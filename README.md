@@ -16,7 +16,7 @@
 
 * **Modular Architecture**: The library uses a decoupled design where pricing methodology, numerical infrastructure, and market conventions are independent modules that can be replaced or extended
 
-* **Self-Contained frameworks**: The library is written from scratch with zero external dependencies, implementing built-in mathematical utilities and numerical approximations (e.g. Abramowitz-Stegun for the Normal CDF)
+* **Self-Contained Frameworks**: The library is written from scratch with zero external dependencies, implementing built-in mathematical utilities and numerical approximations (e.g. Abramowitz-Stegun for the Normal CDF)
 
 
 
@@ -53,6 +53,7 @@ $$\text{Digital}(K) = - \frac{\partial C(K)}{\partial K} \approx \frac{C(K-\epsi
 * **Finite-difference sensitivity**: Greeks and digital prices depend on step-size choices and require adaptive bumping for numerical stability.
 
 * **Performance optimization**: Repeated evaluations across multiple strikes and maturities require caching and efficient numerical routines to prevent redundant computations.
+
 
 
 
