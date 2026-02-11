@@ -36,11 +36,11 @@
 
 * FX options are quoted in delta terms rather than strike terms
 
-* Vanna–Volga meyhod extends Black–Scholes pricing to incorporate market volatility smile effects
+* Vanna–Volga method extends Black–Scholes pricing to incorporate market volatility smile effects
 
 * Digital options can be priced via finite differences on smile-consistent vanilla prices
 
-$$Digital(K) = - \frac{\partial C(K)}{\partial K} \approx \frac{C(K-\epsilon)-C(K+\epsilon)}{2\epsilon}$$
+$$\text{Digital}(K) = - \frac{\partial C(K)}{\partial K} \approx \frac{C(K-\epsilon)-C(K+\epsilon)}{2\epsilon}$$
 
 
 
@@ -53,6 +53,7 @@ $$Digital(K) = - \frac{\partial C(K)}{\partial K} \approx \frac{C(K-\epsilon)-C(
 * **Finite-difference sensitivity**: Greeks and digital prices depend on step-size choices and require adaptive bumping for numerical stability.
 
 * **Performance optimization**: Repeated evaluations across multiple strikes and maturities require caching and efficient numerical routines to prevent redundant computations.
+
 
 
 
